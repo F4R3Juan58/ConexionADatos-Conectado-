@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ConexionADatos.MainPage"
+             BackgroundColor="White">
+
+    <VerticalStackLayout>
+        <Frame CornerRadius="20" Padding="20" BackgroundColor="#800080" Margin="20">
+            <StackLayout>
+                <Label Text="Gestión de empleados"
+               FontSize="24"
+               HorizontalTextAlignment="Center"
+               TextColor="White" />
+            </StackLayout>
+        </Frame>
+
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Frame Grid.Column="0" Margin="20,0,20,0" HeightRequest="200" HorizontalOptions="FillAndExpand">
+                <ScrollView>
+                    <VerticalStackLayout Margin="10,0,10,0">
+                        <Label Text="DEPARTAMENTOS" TextColor="#800080" HorizontalOptions="Center" Margin="0,0,0,10" FontAttributes="Bold" FontSize="20"/>
+                            <ListView x:Name="departamentosListView" SelectionMode="Single" ItemSelected="OnDepartamentoSelected"
+                              HeightRequest="300" HorizontalOptions="Center">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextCell Text="{Binding Nombre}" TextColor="White" />
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </VerticalStackLayout>
+                </ScrollView>
+                    </Frame>
+
+                    <!-- Frame para Localizaciones -->
+            <Frame Grid.Column="1" Margin="20,0,20,0" HeightRequest="200" HorizontalOptions="FillAndExpand">
+                <ScrollView>
+                <VerticalStackLayout Margin="10,0,10,0">
+                        <Label Text="LOCALIZACIONES" TextColor="#800080" HorizontalOptions="Center" Margin="0,0,0,10" FontAttributes="Bold" FontSize="20"/>
+                    <ListView x:Name="localizacionesListView" SelectionMode="Single" ItemSelected="OnLocalizacionSelected"
+                              HeightRequest="300" HorizontalOptions="Center">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding Nombre}" TextColor="White"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </VerticalStackLayout>
+                </ScrollView>
+            </Frame>
+        </Grid>
+
+
+        <VerticalStackLayout Margin="10">
+            <!-- Encabezado con Bordes -->
+            <Grid Padding="10" ColumnSpacing="1" HorizontalOptions="FillAndExpand" BackgroundColor="Black" Margin="10,0,10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Frame Grid.Column="0" BorderColor="Black" Padding="5" BackgroundColor="#800080">
+                    <Label Text="ID" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="20"/>
+                </Frame>
+                <Frame Grid.Column="1" BorderColor="Black" Padding="5" BackgroundColor="#800080">
+                    <Label Text="APELLIDO" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="20"/>
+                </Frame>
+                <Frame Grid.Column="2" BorderColor="Black" Padding="5" BackgroundColor="#800080">
+                    <Label Text="OFICIO" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="20"/>
+                </Frame>
+                <Frame Grid.Column="3" BorderColor="Black" Padding="5" BackgroundColor="#800080">
+                    <Label Text="SALARIO" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="20"/>
+                </Frame>
+                <Frame Grid.Column="4" BorderColor="Black" Padding="5" BackgroundColor="#800080">
+                    <Label Text="COMISIÓN" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="20"/>
+                </Frame>
+                <Frame Grid.Column="5" BorderColor="Black" Padding="5" BackgroundColor="#800080">
+                    <Label Text="FECHA DE ALTA" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="20"/>
+                </Frame>
+            </Grid>
+
+            <!-- ListView con Bordes en cada Celda y Scroll -->
+            <ScrollView Orientation="Vertical">
+                <ListView x:Name="empleadosListView" SelectionMode="Single" ItemSelected="onEmpleadoSelected"
+                  HasUnevenRows="True" HorizontalOptions="FillAndExpand" HeightRequest="200" Margin="10,0,10,0">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10" ColumnSpacing="1" HorizontalOptions="FillAndExpand" BackgroundColor="Black">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Frame Grid.Column="0" BorderColor="Black" Padding="5" BackgroundColor="White">
+                                        <Label Text="{Binding EMP_NO}" TextColor="Black" FontSize="16" HorizontalTextAlignment="Center"/>
+                                    </Frame>
+                                    <Frame Grid.Column="1" BorderColor="Black" Padding="5" BackgroundColor="White">
+                                        <Label Text="{Binding Apellido}" TextColor="Black" FontSize="16" HorizontalTextAlignment="Center"/>
+                                    </Frame>
+                                    <Frame Grid.Column="2" BorderColor="Black" Padding="5" BackgroundColor="White">
+                                        <Label Text="{Binding Oficio}" TextColor="Black" FontSize="16" HorizontalTextAlignment="Center"/>
+                                    </Frame>
+                                    <Frame Grid.Column="3" BorderColor="Black" Padding="5" BackgroundColor="White">
+                                        <Label Text="{Binding Salario}" TextColor="Black" FontSize="16" HorizontalTextAlignment="Center"/>
+                                    </Frame>
+                                    <Frame Grid.Column="4" BorderColor="Black" Padding="5" BackgroundColor="White">
+                                        <Label Text="{Binding Comision}" TextColor="Black" FontSize="16" HorizontalTextAlignment="Center"/>
+                                    </Frame>
+                                    <Frame Grid.Column="5" BorderColor="Black" Padding="5" BackgroundColor="White">
+                                        <Label Text="{Binding FechaAlta}" TextColor="Black" FontSize="16" HorizontalTextAlignment="Center"/>
+                                    </Frame>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+
+            <!-- Sección de entrada de datos alineada correctamente -->
+            <Grid Padding="10" ColumnSpacing="1" HorizontalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label x:Name="Id" BackgroundColor="#800080"  IsVisible="False"
+               Margin="10,0,10,0" TextColor="Black" HorizontalTextAlignment="Center"/>
+
+                <Frame  BackgroundColor="#800080" Grid.Column="0" Margin="10,0,10,0">
+                    <Entry  Placeholder="Apellidos"  PlaceholderColor="White" TextColor="White" x:Name="ApellidosEntry" HorizontalTextAlignment="Center"/>
+                </Frame>
+
+                <Frame  BackgroundColor="#800080" Grid.Column="1" Margin="10,0,10,0">
+                    <Entry Placeholder="Oficios" PlaceholderColor="White" TextColor="white" x:Name="OficiosEntry" HorizontalTextAlignment="Center"/>
+                </Frame>
+
+                <Frame  BackgroundColor="#800080" Grid.Column="2" Margin="10,0,10,0">
+                    <Entry  Placeholder="Salarios" PlaceholderColor="White" TextColor="white" x:Name="SalariosEntry" HorizontalTextAlignment="Center"/>
+                </Frame>
+
+                <Frame BackgroundColor="#800080" Grid.Column="3" Margin="10,0,10,0">
+                    <Entry  Placeholder="Comisiones" PlaceholderColor="White" TextColor="White" x:Name="ComisionesEntry" HorizontalTextAlignment="Center"/>
+                </Frame>
+
+                <Frame  BackgroundColor="#800080" Grid.Column="4" Margin="10,0,10,0">
+                    <DatePicker TextColor="White" x:Name="FechaEntry" HorizontalOptions="Center"/>
+                </Frame>
+            </Grid>
+        </VerticalStackLayout>
+
+
+
+        <Frame Margin="10" Padding="10" BorderColor="Black" CornerRadius="10" BackgroundColor="Black" VerticalOptions="Center">
+            <HorizontalStackLayout Margin="10,0,0,10" HorizontalOptions="FillAndExpand">
+                <!-- Etiqueta "Buscar por" -->
+                <Label Text="Buscar por" TextColor="#800080" FontAttributes="Bold" FontSize="20" Margin="10,0,10,0" VerticalOptions="Center"/>
+
+                <!-- ListView para opciones de búsqueda -->
+                <Picker x:Name="buscarPorPicker" TextColor="Black" BackgroundColor="White" HorizontalTextAlignment="Center" WidthRequest="200" SelectedIndexChanged="campoBuscar">
+                    <Picker.Items>
+                        <x:String>Apellido</x:String>
+                        <x:String>Oficio</x:String>
+                        <x:String>Salario</x:String>
+                        <x:String>Comision</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <Picker x:Name="buscarPicker" TextColor="Black" BackgroundColor="White" HorizontalTextAlignment="Center" WidthRequest="200">
+                </Picker>
+            </HorizontalStackLayout>
+        </Frame>
+
+        <!-- Botones de acción -->
+        <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Center">
+            <Button Text="Buscar" x:Name="buscarButton" Clicked="BuscarButton_Clicked"/>
+            <Button Text="Guardar" x:Name="guardarButton" Clicked="GuardarButton_Clicked"/>
+            <Button Text="Actualizar" x:Name="actualizarButton" Clicked="ActualizarButton_Clicked"/>
+            <Button Text="Borrar" x:Name="borrarButton" Clicked="BorrarButton_Clicked"/>
+            <Button Text="Limpiar" x:Name="limpiarButton" Clicked="LimpiarButton_Clicked"/>
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>

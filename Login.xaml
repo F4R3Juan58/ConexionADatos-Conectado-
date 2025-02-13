@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="black"
+             x:Class="ConexionADatos.Login">
+
+    <Frame BackgroundColor="white" WidthRequest="450" HeightRequest="850">
+        <VerticalStackLayout HorizontalOptions="Center" WidthRequest="400" VerticalOptions="Center">
+
+            <HorizontalStackLayout HorizontalOptions="Center" HeightRequest="60" Margin="0,0,0,20">
+                <Button
+                    Text="Registro"
+                    Clicked="onRegistroMenuClick"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    WidthRequest="190"
+                    Margin="5"
+                    BorderColor="White"
+                    Background="#800080"
+                    HeightRequest="60"
+                    Padding="30,10,30,10"
+                    BorderWidth="2" />
+                <Button
+                    Text="Login"
+                    Clicked="onLoginMenuClick"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    HeightRequest="60"
+                    WidthRequest="190"
+                    BorderColor="White"
+                    Background="#800080"
+                    Margin="5"
+                    Padding="30,10,30,10"
+                    BorderWidth="2" />
+            </HorizontalStackLayout>
+
+            <VerticalStackLayout IsVisible="True" x:Name="MenuLogin">
+                <Frame Background="#6A0DAD" Margin="0,0,0,20" BorderColor="white">
+                    <VerticalStackLayout>
+                        <Label Text="USUARIO"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               Margin="0,0,0,20" />
+                        <Entry x:Name="usuarioLogin"
+                               HeightRequest="56"
+                               BackgroundColor="Black"
+                               HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame Background="#6A0DAD" Margin="0,0,0,20" BorderColor="white">
+                    <VerticalStackLayout>
+                        <Label Text="PASSWORD"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               Margin="0,0,0,20" />
+                        <Entry x:Name="passwordLogin"
+                               BackgroundColor="black"
+                               HeightRequest="60"
+                               HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Button Text="Login"
+                        TextColor="White"
+                        BorderColor="White"
+                        HeightRequest="60"
+                        FontAttributes="Bold"
+                        Background="#800080"
+                        Padding="30,10,30,10"
+                        Clicked="LoginButton"
+                        BorderWidth="2" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout HorizontalOptions="Center" WidthRequest="400" VerticalOptions="Center" x:Name="MenuRegistro" IsVisible="False">
+                <Frame Background="#6A0DAD" Margin="0,0,0,20" BorderColor="white">
+                    <VerticalStackLayout>
+                        <Label Text="USUARIO"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               Margin="0,0,0,20" />
+                        <Entry x:Name="usuarioRegistro"
+                               HeightRequest="56"
+                               BackgroundColor="Black"
+                               HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame Background="#6A0DAD" Margin="0,0,0,20" BorderColor="white">
+                    <VerticalStackLayout>
+                        <Label Text="PASSWORD"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               Margin="0,0,0,20" />
+                        <Entry x:Name="passwordRegistro"
+                               BackgroundColor="black"
+                               HeightRequest="60"
+                               HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame Background="#6A0DAD" Margin="0,0,0,20" BorderColor="white">
+                    <VerticalStackLayout>
+                        <Label Text="CONFIRM PASSWORD"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               Margin="0,0,0,20" />
+                        <Entry x:Name="confirmpassword"
+                               HeightRequest="60"
+                               BackgroundColor="black"
+                               HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Button Text="Registro"
+                        TextColor="White"
+                        BorderColor="White"
+                        HeightRequest="60"
+                        FontAttributes="Bold"
+                        Background="#800080"
+                        Padding="30,10,30,10"
+                        Clicked="RegisterButton"
+                        BorderWidth="2" />
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </Frame>
+</ContentPage>

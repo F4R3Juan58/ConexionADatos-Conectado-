@@ -9,8 +9,6 @@ namespace ConexionADatos
         private static readonly string DbPath = Path.Combine(FileSystem.AppDataDirectory, "empleados.db");
         private static readonly string ConnectionString = $"Data Source={DbPath}";
 
-
-
         // Constructor de la página que inicializa los componentes y crea la base de datos si no existe
         public Login()
         {
@@ -31,8 +29,6 @@ namespace ConexionADatos
                         Password TEXT NOT NULL
                     )";
 
-                
-
                 ExecuteQuery(createUsuarioTable, connection);
             }
         }
@@ -44,7 +40,6 @@ namespace ConexionADatos
                 command.ExecuteNonQuery();
             }
         }
-
 
         // Método que maneja el evento de login, validando el usuario y la contraseña
         private async void LoginButton(object sender, EventArgs e)
